@@ -1,18 +1,16 @@
 package br.com.zupfy.models;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "bandas")
 public class Banda {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(name = "nome_banda")
+    @Column(name = "nome_banda", length = 20)
     private String nome;
 
     @Column(name = "ano_nascimento")

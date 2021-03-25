@@ -21,8 +21,14 @@ public class MusicaController {
         return musicaService.cadastrarMusica(musica);
     }
 
+    @GetMapping
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    public Iterable<Musica> listarMusicas(){
+        return musicaService.listarMusicas();
+    }
+
     @GetMapping("{id}/")
-    public Optional<Musica> buscarMusicaPeloId(@PathVariable int id){
+    public Musica buscarMusicaPeloId(@PathVariable int id){
         return musicaService.pesquisarMusicaPeloId(id);
     }
 

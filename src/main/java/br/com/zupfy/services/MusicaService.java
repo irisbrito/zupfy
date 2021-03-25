@@ -17,16 +17,19 @@ public class MusicaService {
         return musicaRepository.save(musica);
     }
 
-    public Optional<Musica> pesquisarMusicaPeloId(Integer id){
-        Optional optionalMusica = musicaRepository.findById(id);
+    public Musica pesquisarMusicaPeloId(Integer id){
+        Optional<Musica> optionalMusica = musicaRepository.findById(id);
 
         if(optionalMusica.isPresent()){
-            return (Optional<Musica>) optionalMusica.get();
+            return optionalMusica.get();
         }
 
         throw new RuntimeException("Música não existe");
     }
 
+    public Iterable<Musica> listarMusicas(){
+        return musicaRepository.findAll();
+    }
 
 
 }

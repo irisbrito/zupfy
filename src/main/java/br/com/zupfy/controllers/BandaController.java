@@ -25,4 +25,9 @@ public class BandaController {
     public List<Banda> listarBandas(){
         return bandaService.retornarTodasAsBandas();
     }
+
+    @GetMapping("{id}/")
+    public Banda buscarBandaPeloId(@PathVariable int id){
+        return bandaService.buscarBandaPeloId(id);
+    }
 }

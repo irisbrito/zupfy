@@ -5,8 +5,8 @@ import br.com.zupfy.repositories.BandaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class BandaService {
@@ -19,11 +19,21 @@ public class BandaService {
             Banda obj = bandaRepository.save(banda);
             return banda;
         } catch (Exception error){
-            throw new RuntimeException();
+            throw new RuntimeException("Objeto já cadastrado");
         }
     }
 
     public List<Banda> retornarTodasAsBandas(){
-        return (List<Banda>) bandaRepository.findAll().;
+        return (List<Banda>) bandaRepository.findAll();
+    }
+
+    public Banda buscarBandaPeloId(int id){
+        Optional<Banda> optionalBanda = bandaRepository.findById(id);
+
+        if(optionalBanda.isPresent()){
+            return optionalBanda.get();
+        }
+
+        throw new RuntimeException("Banda não encontrada");
     }
 }

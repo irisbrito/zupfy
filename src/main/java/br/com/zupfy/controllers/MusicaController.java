@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Optional;
+
 @RestController
 @RequestMapping("musicas/")
 public class MusicaController {
@@ -18,4 +20,10 @@ public class MusicaController {
     public Musica cadastrarMusica(@RequestBody Musica musica){
         return musicaService.cadastrarMusica(musica);
     }
+
+    @GetMapping("{id}/")
+    public Optional<Musica> buscarMusicaPeloId(@PathVariable int id){
+        return musicaService.pesquisarMusicaPeloId(id);
+    }
+
 }

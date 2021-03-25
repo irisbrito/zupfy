@@ -5,6 +5,8 @@ import br.com.zupfy.repositories.MusicaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class MusicaService {
 
@@ -14,4 +16,17 @@ public class MusicaService {
     public Musica cadastrarMusica(Musica musica){
         return musicaRepository.save(musica);
     }
+
+    public Optional<Musica> pesquisarMusicaPeloId(Integer id){
+        Optional optionalMusica = musicaRepository.findById(id);
+
+        if(optionalMusica.isPresent()){
+            return (Optional<Musica>) optionalMusica.get();
+        }
+
+        throw new RuntimeException("Música não existe");
+    }
+
+
+
 }

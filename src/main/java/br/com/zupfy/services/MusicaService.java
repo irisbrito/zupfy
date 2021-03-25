@@ -31,5 +31,9 @@ public class MusicaService {
         return musicaRepository.findAll();
     }
 
+    public void deletarMusica(int id){
+        musicaRepository.deleteById(id);
+    }
+
 
 }

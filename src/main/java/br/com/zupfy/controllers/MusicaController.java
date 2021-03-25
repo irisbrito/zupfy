@@ -21,15 +21,20 @@ public class MusicaController {
         return musicaService.cadastrarMusica(musica);
     }
 
+    @GetMapping("{id}/")
+    public Musica buscarMusicaPeloId(@PathVariable int id){
+        return musicaService.pesquisarMusicaPeloId(id);
+    }
+
     @GetMapping
     @ResponseStatus(HttpStatus.ACCEPTED)
     public Iterable<Musica> listarMusicas(){
         return musicaService.listarMusicas();
     }
 
-    @GetMapping("{id}/")
-    public Musica buscarMusicaPeloId(@PathVariable int id){
-        return musicaService.pesquisarMusicaPeloId(id);
+    @DeleteMapping("{id}/")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void deletarMusica(@PathVariable int id){
+        musicaService.deletarMusica(id);
     }
-
 }

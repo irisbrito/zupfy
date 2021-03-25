@@ -8,15 +8,13 @@ import java.time.LocalTime;
 
 public class MusicaAtualizacaoCompletaDTO {
 
-    @NotBlank
     @NotNull
+    @NotBlank
     private String nomeMusica;
 
-    @NotBlank
     @NotNull
     private LocalTime duracao;
 
-    @NotBlank
     @NotNull
     private String enderecoMusica;
 
@@ -51,6 +49,7 @@ public class MusicaAtualizacaoCompletaDTO {
         Musica musica = new Musica();
         musica.setId(id);
         musica.setNomeMusica(this.nomeMusica);
+        musica.setDuracao(this.duracao);
         musica.setEnderecoMusica(this.enderecoMusica);
 
         return musica;

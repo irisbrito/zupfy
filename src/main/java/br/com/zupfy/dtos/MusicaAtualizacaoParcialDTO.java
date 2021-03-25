@@ -41,6 +41,7 @@ public class MusicaAtualizacaoParcialDTO {
         Musica musica = new Musica();
         musica.setId(id);
         musica.setNomeMusica(this.nomeMusica);
+        musica.setDuracao(this.duracao);
         musica.setEnderecoMusica(this.enderecoMusica);
 
         return musica;

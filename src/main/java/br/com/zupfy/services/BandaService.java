@@ -5,6 +5,8 @@ import br.com.zupfy.repositories.BandaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.sql.SQLIntegrityConstraintViolationException;
+
 @Service
 public class BandaService {
 
@@ -12,6 +14,11 @@ public class BandaService {
     private BandaRepository bandaRepository;
 
     public Banda adicionarBanda(Banda banda){
-        return bandaRepository.save(banda);
+        try{
+            Banda obj = bandaRepository.save(banda);
+            return banda;
+        } catch (Exception error){
+            throw new RuntimeException();
+        }
     }
 }

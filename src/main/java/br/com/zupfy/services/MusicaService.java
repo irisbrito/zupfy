@@ -41,6 +41,26 @@ public class MusicaService {
         throw new RuntimeException("Musica não encontrada");
     }
 
+    public Musica atualizarParcialMusica(Musica musica){
+
+        Musica objetoMusica  = pesquisarMusicaPeloId(musica.getId());
+
+        if(!objetoMusica.getNomeMusica().equals(musica.getNomeMusica()) && objetoMusica.getNomeMusica() != null ){
+            objetoMusica.setNomeMusica(musica.getNomeMusica());
+        }
+
+        if(!objetoMusica.getDuracao().equals(musica.getDuracao()) && objetoMusica.getDuracao() != null ){
+            objetoMusica.setDuracao(musica.getDuracao());
+        }
+
+        if(!objetoMusica.getEnderecoMusica().equals(musica.getEnderecoMusica()) && objetoMusica.getEnderecoMusica() != null ){
+            objetoMusica.setEnderecoMusica(musica.getEnderecoMusica());
+        }
+
+        return atualizarMusica(objetoMusica);
+
+    }
+
     public void deletarMusica(int id){
         musicaRepository.deleteById(id);
     }

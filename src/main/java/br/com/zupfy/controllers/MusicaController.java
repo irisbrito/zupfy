@@ -1,6 +1,7 @@
 package br.com.zupfy.controllers;
 
 import br.com.zupfy.dtos.MusicaAtualizacaoCompletaDTO;
+import br.com.zupfy.dtos.MusicaAtualizacaoParcialDTO;
 import br.com.zupfy.models.Banda;
 import br.com.zupfy.models.Musica;
 import br.com.zupfy.services.MusicaService;
@@ -35,10 +36,19 @@ public class MusicaController {
     }
 
     @PutMapping("{id}/")
-    public Musica atualizarMusica(@PathVariable int id, @RequestBody @Valid MusicaAtualizacaoCompletaDTO musicaDTO){
+    public Musica atualizarMusica(@PathVariable int id,
+                                  @RequestBody @Valid MusicaAtualizacaoCompletaDTO musicaDTO){
         Musica musica = musicaDTO.converterMusicaParaDTO(id);
 
         return musicaService.atualizarMusica(musica);
+    }
+
+    @PatchMapping("{id}/")
+    public Musica atualizarMusicaParcial(@PathVariable int id,
+                                  @RequestBody @Valid MusicaAtualizacaoParcialDTO musicaDTO){
+        Musica musica = musicaDTO.converterMusicaParaDTO(id);
+
+        return musicaService.atualizarParcialMusica(musica);
     }
 
     @DeleteMapping("{id}/")

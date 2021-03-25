@@ -46,4 +46,10 @@ public class BandaController {
         Banda banda = bandaDTO.converterDTOParaBanda(id);
         return bandaService.atualizarParcialBanda(banda);
     }
+
+    @DeleteMapping("{id}/")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void deletarBanda(@PathVariable int id){
+        bandaService.deletarBanda(id);
+    }
 }

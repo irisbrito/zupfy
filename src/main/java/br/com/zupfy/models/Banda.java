@@ -35,7 +35,7 @@ public class Banda {
         this.nome = nome;
     }
 
-    public int getNascimento() {
+    public Integer getNascimento() {
         return nascimento;
     }
 

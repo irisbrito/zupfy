@@ -60,4 +60,8 @@ public class BandaService {
         return atualizarBanda(objetoBanda);
 
     }
+
+    public void deletarBanda(int id){
+        bandaRepository.deleteById(id);
+    }
 }

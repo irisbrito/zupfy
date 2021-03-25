@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("bandas/")
 public class BandaController {
@@ -17,5 +19,10 @@ public class BandaController {
     @ResponseStatus(HttpStatus.CREATED)
     public Banda registrarBanda(@RequestBody Banda banda){
         return bandaService.adicionarBanda(banda);
+    }
+
+    @GetMapping
+    public List<Banda> listarBandas(){
+        return bandaService.retornarTodasAsBandas();
     }
 }

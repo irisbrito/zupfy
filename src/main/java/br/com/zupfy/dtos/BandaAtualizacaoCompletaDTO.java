@@ -5,12 +5,8 @@ import br.com.zupfy.models.Banda;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Null;
 
 public class BandaAtualizacaoCompletaDTO {
-
-    @Null
-    private int id;
 
     @NotBlank
     @NotNull
@@ -21,14 +17,6 @@ public class BandaAtualizacaoCompletaDTO {
     private int nascimento;
 
     public BandaAtualizacaoCompletaDTO() {
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getNome() {

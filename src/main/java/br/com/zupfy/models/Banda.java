@@ -10,7 +10,7 @@ public class Banda {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(name = "nome_banda", length = 20)
+    @Column(name = "nome_banda", length = 20, unique = true)
     private String nome;
 
     @Column(name = "ano_nascimento")

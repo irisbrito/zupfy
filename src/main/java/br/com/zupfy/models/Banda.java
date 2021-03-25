@@ -14,7 +14,7 @@ public class Banda {
     private String nome;
 
     @Column(name = "ano_nascimento")
-    private int nascimento;
+    private Integer nascimento;
 
     public Banda() {
     }
@@ -39,7 +39,7 @@ public class Banda {
         return nascimento;
     }
 
-    public void setNascimento(int nascimento) {
+    public void setNascimento(Integer nascimento) {
         this.nascimento = nascimento;
     }
 }

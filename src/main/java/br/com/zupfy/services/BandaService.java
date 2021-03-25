@@ -53,8 +53,8 @@ public class BandaService {
             objetoBanda.setNome(banda.getNome());
         }
 
-        if(objetoBanda.getNascimento() != banda.getNascimento()){
-           objetoBanda.setNascimento(banda.getNascimento());
+        if (objetoBanda.getNascimento() != banda.getNascimento() && banda.getNascimento() != null){
+            objetoBanda.setNascimento(banda.getNascimento());
         }
 
         return atualizarBanda(objetoBanda);

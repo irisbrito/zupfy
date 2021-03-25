@@ -3,15 +3,15 @@ package br.com.zupfy.dtos;
 import br.com.zupfy.models.Banda;
 
 import javax.validation.constraints.Min;
-import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
 public class BandaAtualizacaoParcialDTO {
 
-    @NotBlank
+    @Size(min = 2)
     private String nome;
 
     @Min(1000)
-    private int nascimento;
+    private Integer nascimento;
 
     public BandaAtualizacaoParcialDTO() {
     }

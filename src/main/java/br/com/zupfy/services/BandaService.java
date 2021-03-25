@@ -45,4 +45,19 @@ public class BandaService {
 
         throw new RuntimeException("Banda não encontrada");
     }
+
+    public Banda atualizarParcialBanda(Banda banda){
+        Banda objetoBanda  = buscarBandaPeloId(banda.getId());
+
+        if(!objetoBanda.getNome().equals(banda.getNome()) && objetoBanda.getNome() != null ){
+            objetoBanda.setNome(banda.getNome());
+        }
+
+        if(objetoBanda.getNascimento() != banda.getNascimento()){
+           objetoBanda.setNascimento(banda.getNascimento());
+        }
+
+        return atualizarBanda(objetoBanda);
+
+    }
 }

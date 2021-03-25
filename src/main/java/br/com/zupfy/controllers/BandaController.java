@@ -39,4 +39,11 @@ public class BandaController {
         Banda banda = bandaDTO.converterDTOParaBanda(id);
         return bandaService.atualizarBanda(banda);
     }
+
+    @PatchMapping("{id}/")
+    public Banda atualizarBandaParcial(@PathVariable int id,
+                                        @RequestBody @Valid BandaAtualizacaoCompletaDTO bandaDTO){
+        Banda banda = bandaDTO.converterDTOParaBanda(id);
+        return bandaService.atualizarParcialBanda(banda);
+    }
 }

@@ -1,11 +1,13 @@
 package br.com.zupfy.controllers;
 
+import br.com.zupfy.dtos.BandaAtualizacaoCompletaDTO;
 import br.com.zupfy.models.Banda;
 import br.com.zupfy.services.BandaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -29,5 +31,12 @@ public class BandaController {
     @GetMapping("{id}/")
     public Banda buscarBandaPeloId(@PathVariable int id){
         return bandaService.buscarBandaPeloId(id);
+    }
+
+    @PutMapping("{id}/")
+    public Banda atualizarBandaCompleta(@PathVariable int id,
+                                        @RequestBody @Valid BandaAtualizacaoCompletaDTO bandaDTO){
+        Banda banda = bandaDTO.converterDTOParaBanda(id);
+        return bandaService.atualizarBanda(banda);
     }
 }

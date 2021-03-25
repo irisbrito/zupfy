@@ -36,4 +36,13 @@ public class BandaService {
 
         throw new RuntimeException("Banda não encontrada");
     }
+
+    public Banda atualizarBanda(Banda banda){
+        if(bandaRepository.existsById(banda.getId())){
+            Banda objBanda = adicionarBanda(banda);
+            return banda;
+        }
+
+        throw new RuntimeException("Banda não encontrada");
+    }
 }

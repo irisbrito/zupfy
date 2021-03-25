@@ -1,5 +1,6 @@
 package br.com.zupfy.services;
 
+import br.com.zupfy.models.Banda;
 import br.com.zupfy.models.Musica;
 import br.com.zupfy.repositories.MusicaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +30,15 @@ public class MusicaService {
 
     public Iterable<Musica> listarMusicas(){
         return musicaRepository.findAll();
+    }
+
+    public Musica atualizarMusica(Musica musica) {
+        if (musicaRepository.existsById(musica.getId())) {
+            Musica objetoMusica = cadastrarMusica(musica);
+            return musica;
+        }
+
+        throw new RuntimeException("Musica não encontrada");
     }
 
     public void deletarMusica(int id){

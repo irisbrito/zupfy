@@ -15,7 +15,19 @@ public class Musica {
     private LocalTime duracao;
     private String enderecoMusica;
 
+    @ManyToOne
+    @Column(nullable = false)
+    private Banda banda;
+
     public Musica() {
+    }
+
+    public Banda getBanda() {
+        return banda;
+    }
+
+    public void setBanda(Banda banda) {
+        this.banda = banda;
     }
 
     public int getId() {

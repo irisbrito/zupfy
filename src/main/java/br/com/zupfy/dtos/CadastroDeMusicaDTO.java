@@ -1,5 +1,6 @@
 package br.com.zupfy.dtos;
 
+import br.com.zupfy.models.Album;
 import br.com.zupfy.models.Banda;
 import br.com.zupfy.models.Musica;
 
@@ -16,9 +17,49 @@ public class CadastroDeMusicaDTO {
     @NotBlank
     private String enderecoMusica;
     @NotNull(message = "Id da banda é obrigatório")
-    private int bandaid;
+    private int bandaId;
+    @NotNull
+    private AlbumDTO album;
+
+    private int albumId;
+
+    private String nomeAlbum;
+
+    private int anoLancamento;
 
     public CadastroDeMusicaDTO() {
+    }
+
+    public int getBandaId() {
+        return bandaId;
+    }
+
+    public void setBandaId(int bandaId) {
+        this.bandaId = bandaId;
+    }
+
+    public AlbumDTO getAlbum() {
+        return album;
+    }
+
+    public void setAlbum(AlbumDTO album) {
+        this.album = album;
+    }
+
+    public String getNomeAlbum() {
+        return nomeAlbum;
+    }
+
+    public void setNomeAlbum(String nomeAlbum) {
+        this.nomeAlbum = nomeAlbum;
+    }
+
+    public int getAnoLancamento() {
+        return anoLancamento;
+    }
+
+    public void setAnoLancamento(int anoLancamento) {
+        this.anoLancamento = anoLancamento;
     }
 
     public String getNomeMusica() {
@@ -46,11 +87,11 @@ public class CadastroDeMusicaDTO {
     }
 
     public int getBandaid() {
-        return bandaid;
+        return bandaId;
     }
 
-    public void setBandaid(int bandaid) {
-        this.bandaid = bandaid;
+    public void setBandaid(int bandaId) {
+        this.bandaId = bandaId;
     }
 
     public Musica converterDTOParaModel(){
@@ -60,9 +101,17 @@ public class CadastroDeMusicaDTO {
         musica.setEnderecoMusica(this.enderecoMusica);
 
         Banda banda = new Banda();
-        banda.setId(this.bandaid);
+        banda.setId(this.bandaId);
         musica.setBanda(banda);
 
+        musica.setAlbum(this.album.converterDTOParaModel());
+
+        /*Album album = new Album();
+        album.setId(this.albumId);
+        album.setNome(this.nomeAlbum);
+        album.setAnoLancamento(this.anoLancamento);
+        musica.setAlbum(album);
+*/
         return musica;
     }
 }

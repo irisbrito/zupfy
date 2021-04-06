@@ -1,8 +1,9 @@
 package br.com.zupfy.controllers;
 
+import br.com.zupfy.dtos.CadastroDeMusicaDTO;
 import br.com.zupfy.dtos.MusicaAtualizacaoCompletaDTO;
 import br.com.zupfy.dtos.MusicaAtualizacaoParcialDTO;
-import br.com.zupfy.models.Banda;
+import br.com.zupfy.dtos.MusicaDTO;
 import br.com.zupfy.models.Musica;
 import br.com.zupfy.services.MusicaService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,13 +21,17 @@ public class MusicaController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Musica cadastrarMusica(@RequestBody Musica musica){
-        return musicaService.cadastrarMusica(musica);
+    public MusicaDTO registrarMusica(@RequestBody @Valid CadastroDeMusicaDTO musicaDTO){
+        Musica musica = musicaDTO.converterDTOParaModel();
+        Musica objeto = musicaService.salvarNovaMusica(musica);
+        return MusicaDTO.converterModelParaDTOComAlbum(objeto);
     }
 
     @GetMapping("{id}/")
-    public Musica buscarMusicaPeloId(@PathVariable int id){
-        return musicaService.pesquisarMusicaPeloId(id);
+    public MusicaDTO buscarMusicaPeloId(@PathVariable int id){
+        Musica musica = musicaService.pesquisarMusicaPeloId(id);
+        return MusicaDTO.converterModelParaDTOComAlbum(musica);
+
     }
 
     @GetMapping

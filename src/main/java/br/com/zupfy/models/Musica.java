@@ -15,11 +15,21 @@ public class Musica {
     private LocalTime duracao;
     private String enderecoMusica;
 
-    @ManyToOne
-    @Column(nullable = false)
+    @ManyToOne(optional = false)
     private Banda banda;
 
+    @ManyToOne
+    private Album album;
+
     public Musica() {
+    }
+
+    public Album getAlbum() {
+        return album;
+    }
+
+    public void setAlbum(Album album) {
+        this.album = album;
     }
 
     public Banda getBanda() {

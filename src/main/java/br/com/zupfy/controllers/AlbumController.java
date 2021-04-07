@@ -1,5 +1,6 @@
 package br.com.zupfy.controllers;
 
+import br.com.zupfy.dtos.AlbumDTO;
 import br.com.zupfy.dtos.AlbumMusicasDetailDTO;
 import br.com.zupfy.models.Album;
 import br.com.zupfy.services.AlbumService;
@@ -25,6 +26,11 @@ public class AlbumController {
         Album album = albumService.buscarPorId(id);
 
         return AlbumMusicasDetailDTO.converterModelParaDTO(album);
+    }
+
+    @GetMapping
+    public Iterable<Album> retornarTodosOsAlbuns(){
+        return albumService.retornarTodosOsAlbuns();
     }
 
 }

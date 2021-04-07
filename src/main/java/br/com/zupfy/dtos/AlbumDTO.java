@@ -5,6 +5,8 @@ import br.com.zupfy.models.Album;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import java.util.ArrayList;
+import java.util.List;
 
 public class AlbumDTO {
 
@@ -50,5 +52,26 @@ public class AlbumDTO {
         album.setId(this.id);
 
         return album;
+    }
+
+    public static Iterable<AlbumDTO> converterIterableDeModelParaDTO(Iterable<Album> albuns){
+        List<AlbumDTO> albunsDTO = new ArrayList<>();
+
+        for(Album album : albuns){
+            albunsDTO.add(converterModelParaDTO(album));
+        }
+
+        return albunsDTO;
+    }
+
+    public static AlbumDTO converterModelParaDTO(Album album){
+        AlbumDTO albunsDTO = new AlbumDTO();
+
+        albunsDTO.setAnoLancamento(album.getAnoLancamento());
+        albunsDTO.setId(album.getId());
+        albunsDTO.setNome(album.getNome());
+
+        return albunsDTO;
+
     }
 }

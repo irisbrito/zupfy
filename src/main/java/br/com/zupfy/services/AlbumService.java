@@ -13,22 +13,22 @@ public class AlbumService {
     @Autowired
     private AlbumRepository albumRepository;
 
-    public Album salvarAlbum(Album album){
+    public Album salvarAlbum(Album album) {
         return albumRepository.save(album);
     }
 
-    public Album buscarPorId(int id){
+    public Album buscarPorId(int id) {
         Optional<Album> optionalAlbum = albumRepository.findById(id);
 
-        if(optionalAlbum.isPresent()){
+        if (optionalAlbum.isPresent()) {
             return optionalAlbum.get();
         }
 
         throw new RuntimeException("Album não existe");
     }
 
-    public Album buscarOuCriarAlbum(Album album){
-        if(album.getId() != null){
+    public Album buscarOuCriarAlbum(Album album) {
+        if (album.getId() != null) {
             album = buscarPorId(album.getId());
         } else {
             album = salvarAlbum(album);
@@ -36,4 +36,11 @@ public class AlbumService {
 
         return album;
     }
+
+    public Iterable<Album> retornarTodosOsAlbuns() {
+        return albumRepository.findAll();
+    }
+
+
+
 }

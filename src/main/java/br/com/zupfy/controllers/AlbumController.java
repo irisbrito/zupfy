@@ -2,6 +2,7 @@ package br.com.zupfy.controllers;
 
 import br.com.zupfy.dtos.AlbumDTO;
 import br.com.zupfy.dtos.AlbumMusicasDetailDTO;
+import br.com.zupfy.dtos.FiltroDeAlbunsDTO;
 import br.com.zupfy.models.Album;
 import br.com.zupfy.services.AlbumService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,8 +30,9 @@ public class AlbumController {
     }
 
     @GetMapping
-    public Iterable<Album> retornarTodosOsAlbuns(){
-        return albumService.retornarTodosOsAlbuns();
+    public Iterable<AlbumDTO> retornarTodosOsAlbuns(@ModelAttribute FiltroDeAlbunsDTO filtro) {
+        Iterable<Album> albuns = albumService.pesquisarTodosOsAlbuns(filtro);
+        return AlbumDTO.converterIterableDeModelParaDTO(albuns);
     }
 
 }
